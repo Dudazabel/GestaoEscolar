@@ -8,6 +8,7 @@ import com.example.GestaoEscolar.repository.AlunoRepository;
 import org.springframework.stereotype.Service;
 
 import java.sql.SQLException;
+import java.util.List;
 
 @Service
 public class AlunoService {
@@ -23,6 +24,23 @@ public class AlunoService {
         Aluno aluno = mapper.DTOParaEntidade(requisicao);
         Aluno alunoSalvo = repository.cadastrarAluno(aluno);
         return mapper.EntidadeParaDTO(alunoSalvo);
+    }
+
+    public List<AlunoRespostaDTO> listaAlunos()throws SQLException{
+        return mapper.EntidadeParaDTOList(repository.listarAlunos());
+    }
+
+    public AlunoRespostaDTO procurarAlunoID(int id) throws SQLException{
+        return mapper.EntidadeParaDTO(repository.procurarAlunoID(id));
+    }
+
+    public void atualizarAluno(int id, AlunoRequisicaoDTO requisicao) throws SQLException{
+        Aluno aluno = mapper.DTOParaEntidade(requisicao);
+        repository.atualizarAluno(id, aluno);
+    }
+
+    public void deletarAluno(int id) throws SQLException{
+        repository.deletarAluno(id);
     }
 
 
