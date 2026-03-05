@@ -32,7 +32,7 @@ public class ProfessorService {
     }
 
     public ProfessorRespostaDTO procurarProfessorID(int id) throws SQLException{
-        return mapper.EntidadeParaDTO(repository.buscarProfessorID(id));
+        return mapper.EntidadeParaDTO(repository.procurarProfessorID(id));
     }
 
     public void atualizarProfessor(int id, ProfessorRequisicaoDTO requisicao) throws SQLException{

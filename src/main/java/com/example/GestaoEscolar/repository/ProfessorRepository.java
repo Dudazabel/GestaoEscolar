@@ -26,11 +26,10 @@ public class ProfessorRepository {
 
             if(rs.next()){
                 professor.setId(rs.getInt(1));
-                return professor;
+
             }
         }
-
-        return null;
+        return professor;
     }
 
     public List<Professor> listarProfessores() throws SQLException{
@@ -59,7 +58,7 @@ public class ProfessorRepository {
         return professores;
     }
 
-    public Professor buscarProfessorID(int ID) throws SQLException{
+    public Professor procurarProfessorID(int ID) throws SQLException{
         String query = "SELECT id, nome, email, disciplina FROM professor WHERE id = ?";
 
         try(Connection conn = Conexao.conectar();
@@ -69,7 +68,7 @@ public class ProfessorRepository {
 
             ResultSet rs = stmt.executeQuery();
 
-            while (rs.next()){
+            if (rs.next()){
                 int id = rs.getInt("id");
                 String nome = rs.getString("nome");
                 String email = rs.getString("email");

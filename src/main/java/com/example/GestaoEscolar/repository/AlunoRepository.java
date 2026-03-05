@@ -28,11 +28,9 @@ public class AlunoRepository {
 
             if(rs.next()){
                 aluno.setId(rs.getInt(1));
-                return aluno;
             }
         }
-
-        return null;
+        return aluno;
     }
 
     public List<Aluno> listarAlunos() throws SQLException{
